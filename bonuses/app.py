@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .api import (client, third_party)
+from bonuses.api import (client, third_party)
 
 
 app = Flask(__name__)

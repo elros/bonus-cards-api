@@ -5,14 +5,14 @@ from bonuses.auth import jwt, bcrypt
 from bonuses.api import client, third_party
 
 
-app = Flask('bonuses_api')
-app.config.from_envvar('BONUSES_API_SETTINGS')
+bonuses_app = Flask('bonuses_api')
+bonuses_app.config.from_envvar('BONUSES_API_SETTINGS')
 
-mongo.init_app(app)
-jwt.init_app(app)
-bcrypt.init_app(app)
+mongo.init_app(bonuses_app)
+jwt.init_app(bonuses_app)
+bcrypt.init_app(bonuses_app)
 
-api_prefix = app.config['BONUSES_API_PREFIX']
+api_prefix = bonuses_app.config['BONUSES_API_PREFIX']
 
-app.register_blueprint(client.api, url_prefix=(api_prefix + '/client'))
-app.register_blueprint(third_party.api, url_prefix=(api_prefix + '/third-party'))
+bonuses_app.register_blueprint(client.api, url_prefix=(api_prefix + '/client'))
+bonuses_app.register_blueprint(third_party.api, url_prefix=(api_prefix + '/third-party'))

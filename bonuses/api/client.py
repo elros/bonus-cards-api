@@ -8,7 +8,11 @@ api = Blueprint('client_api', __name__)
 @api.route('/profile')
 @jwt_required()
 def get_profile():
-    return jsonify({'todo': True, 'id': str(current_identity)})
+    return {
+        'full_name': current_identity.full_name,
+        'email': current_identity.email,
+        'bonus_card_id': current_identity.bonus_card_id,
+    }
 
 
 @api.route('/bonus-transactions/')

@@ -21,7 +21,7 @@ bruteforce_filter = make_bruteforce_ip_filter(
 def authenticate(username, password):
     user = get_user_by_username(username)
 
-    if not user or not bcrypt.check_password_hash(user.pwd_hash, password):
+    if not user or not bcrypt.check_password_hash(user.pwd_hash, password.encode('utf-8')):
         raise Unauthorized
 
     return user

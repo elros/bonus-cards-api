@@ -5,6 +5,7 @@ from flask_jwt import JWT
 from flask_pymongo import ObjectId
 
 from bonuses.database import mongo
+from bonuses.utils import make_bruteforce_ip_filter
 
 
 jwt = JWT()
@@ -13,6 +14,14 @@ jwt = JWT()
 User = namedtuple('User', 'id username')
 
 
+bruteforce_filter = make_bruteforce_ip_filter(
+    window_cfg='BRUTEFORCE_WINDOW',
+    threshold_cfg='BRUTEFORCE_THRESHOLD',
+    lag_cfg='BRUTEFORCE_LAG'
+)
+
+
+@bruteforce_filter
 def authenticate(username, password):
     user = mongo.db.users.find_one({'username': username})
 

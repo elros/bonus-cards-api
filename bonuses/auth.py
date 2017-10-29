@@ -1,17 +1,13 @@
-from collections import namedtuple
-
 from werkzeug.exceptions import Unauthorized
 from flask_jwt import JWT
-from flask_pymongo import ObjectId
+from flask_bcrypt import Bcrypt
 
-from bonuses.database import mongo
+from bonuses.database import get_user_by_username, get_user_by_id
 from bonuses.utils import make_bruteforce_ip_filter
 
 
 jwt = JWT()
-
-
-User = namedtuple('User', 'id username')
+bcrypt = Bcrypt()
 
 
 bruteforce_filter = make_bruteforce_ip_filter(
@@ -23,28 +19,22 @@ bruteforce_filter = make_bruteforce_ip_filter(
 
 @bruteforce_filter
 def authenticate(username, password):
-    user = mongo.db.users.find_one({'username': username})
+    user = get_user_by_username(username)
 
-    if not user or user['password'] != password:
+    if not user or not bcrypt.check_password_hash(user.pwd_hash, password):
         raise Unauthorized
 
-    return User(
-        id=str(user['_id']),
-        username=username
-    )
+    return user
 
 
 def identity(payload):
     user_id = payload['identity']
-    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
+    user = get_user_by_id(user_id)
 
     if not user:
         raise Unauthorized
 
-    return User(
-        id=str(user['_id']),
-        username=str(user['username'])
-    )
+    return user
 
 
 jwt.authentication_handler(authenticate)

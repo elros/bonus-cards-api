@@ -4,11 +4,11 @@
 
 1. Install package requirements
 
-    pip install -r requirements.txt
+    `pip install -r requirements.txt`
 
 2. Install and run a MongoDB instance (or just use [a Docker container](https://hub.docker.com/_/mongo/) as show below)
 
-    docker run -d -p 27017:27017 mongo
+    `docker run -d -p 27017:27017 mongo`
 
 ## Bonuses API
 
@@ -39,7 +39,7 @@ You should use the provided JWT token in subsequent requests like this:
 
 ### API for clients
 
-1. User profile
+#### User profile
 
 Request example:
 
@@ -54,7 +54,7 @@ Response example:
 
     {"bonus_card_id": "000001", "email": "alice@localhost", "full_name": "Alice Doe"}
 
-2. Bonus transactions list
+#### Bonus transactions list
 
 Use `page` parameter for pagination.
 
@@ -73,7 +73,7 @@ Response example:
 
 ### API for third-party apps
 
-1. Create bonus transaction
+#### Create bonus transaction
 
 Request example:
 

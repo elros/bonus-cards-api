@@ -1,0 +1,6 @@
+flask
+pymongo
+Flask-PyMongo
+Flask-JWT
+flask-bcrypt
+python-dateutil

@@ -79,10 +79,10 @@ Request example:
 
     POST /api/v1/third-party/bonus-transactions/
     Content-Type: application/json
-    Content-Length: 81
+    Content-Length: 112
     Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTE5NzA3NTUsImlhdCI6MTUwOTM3ODc1NSwibmJmIjoxNTA5Mzc4NzU1LCJpZGVudGl0eSI6IjU5ZjYyZDM1YmE0ZDEyOTlhZDI3YWM0NCJ9.56e2PCGjBbZBoqcltD94Ump7awhqsaSJPumyEsWYkvA
 
-    {"bonus_card_id": "000001", "email": "alice@localhost", "full_name": "Alice Doe"}
+    {"bonus_card_id": "000001", "points": 42, "flight_from": "LED", "flight_to": "KRR", "flight_date": "2017-01-03"}
 
 Response example:
 

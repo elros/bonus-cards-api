@@ -21,9 +21,17 @@ def get_profile():
 @api.route('/bonus-transactions/')
 @jwt_required()
 def get_bonus_transactions_list():
+    transactions = [{
+        'bonus_card_id': str(transaction.bonus_card_id),
+        'points': int(transaction.points),
+        'flight_from': str(transaction.flight_from),
+        'flight_to': str(transaction.flight_to),
+        'flight_date': transaction.flight_date
+    } for transaction in get_transactions_by_bonus_card_id(current_identity.bonus_card_id)]
+
     return jsonify({
         'transactions': get_paginated_part(
-            items=get_transactions_by_bonus_card_id(current_identity.bonus_card_id),
+            items=transactions,
             page=int(request.values.get('page', 1)),
             page_size=current_app.config['TRANSACTIONS_LIST_PAGE_SIZE'],
         )

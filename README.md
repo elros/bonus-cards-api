@@ -1,4 +1,4 @@
-# python-mongo-api
+# Bonus cards API
 
 ## Installation
 

@@ -74,3 +74,15 @@ def get_transactions_by_bonus_card_id(bonus_card_id):
         )
         for transaction in transactions
     ]
+
+
+def create_bonus_transaction(bonus_transaction):
+    if not isinstance(bonus_transaction, BonusTransaction):
+        raise TypeError('Expecting argument bonus_transaction of type BonusTransaction')
+
+    as_dict = bonus_transaction._asdict()
+    del as_dict['id']
+
+    created_object = mongo.db.transactions.insert_one({**as_dict})
+
+    return str(created_object.inserted_id)

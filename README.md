@@ -1,5 +1,9 @@
 # python-mongo-api
 
+## Installation
+
+1. Install package requirements
+
 ## Bonuses API
 
 ### API for clients

@@ -3,6 +3,7 @@ import math
 from collections import Counter
 from functools import wraps
 
+import dateutil.parser
 from flask import request, current_app
 
 
@@ -47,3 +48,7 @@ def get_paginated_part(items, page, page_size):
         page_end = min(page * page_size, len(items))
         page_slice = slice(page_start, page_end)
         return items[page_slice]
+
+
+def parse_iso8601_date(date_str):
+    return dateutil.parser.parse(date_str)

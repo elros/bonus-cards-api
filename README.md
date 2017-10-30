@@ -2,11 +2,11 @@
 
 ## Installation
 
-1. Install package requirements
+1. Install package requirements:
 
     `pip install -r requirements.txt`
 
-2. Install and run a MongoDB instance (or just use [a Docker container](https://hub.docker.com/_/mongo/) as show below)
+2. Install and run a MongoDB instance, or just use [a Docker container](https://hub.docker.com/_/mongo/):
 
     `docker run -d -p 27017:27017 mongo`
 
@@ -14,7 +14,7 @@
 
 ### Authorization
 
-The Bonuses app uses [JWT](https://jwt.io) authorization. To access the API you'll need to get an authorization token. First send a JSON object with username and password to the auth URI (see example below).
+The Bonuses app uses [JWT](https://jwt.io) authorization. To access the API you'll need to get an authorization token (see example below).
 
 Request example:
 

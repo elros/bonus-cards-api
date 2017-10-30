@@ -4,11 +4,11 @@
 
 1. Install package requirements
 
-    # pip install -r requirements.txt
+    pip install -r requirements.txt
 
 2. Install and run a MongoDB instance (or just use [a Docker container](https://hub.docker.com/_/mongo/) as show below)
 
-    # docker run -d -p 27017:27017 mongo
+    docker run -d -p 27017:27017 mongo
 
 ## Bonuses API
 
